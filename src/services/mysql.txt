@@ -1,0 +1,48 @@
+const mysql = require('mysql2');
+
+const connection = mysql.createConnection({
+      host: 'localhost',
+      user: 'root',
+      password: '29122912',
+      database: 'icommerce'
+});
+
+connection.connect((err) => {
+  if (err) {
+    console.error('Erro ao conectar ao MySQL:', err);
+  } else {
+    console.log('Conexão bem-sucedida ao MySQL!');
+  }
+});
+
+// Não se esqueça de fechar a conexão quando não for mais necessário
+connection.end();
+
+const mysql = require('mysql2/promise');
+
+async function ConectMain() {
+  try {
+    const connection = await mysql.createConnection({
+      host: 'localhost',
+      user: 'root',
+      password: '29122912',
+      database: 'icommerce'
+    });
+
+    const categoriaDeProdutos = await connection.query('SELECT * FROM categoria_de_produtos');
+
+    return categoriaDeProdutos;
+  } catch (err) {
+    console.log(err);
+    throw err;
+  }
+}
+
+(async () => {
+  try {
+    const resultado = await ConectMain();
+    console.log('categorias',resultado)
+  } catch (error) {
+    console.error('Erro:', error);
+  }
+})();

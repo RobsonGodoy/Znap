@@ -1,0 +1,21 @@
+{
+  "name": "znap",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon src/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "eslint": "^8.56.0",
+    "mysql2": "^3.7.1",
+    "restify": "^11.1.0"
+  },
+  "dependencies": {
+    "restify-cors-middleware2": "^2.2.1"
+  }
+}
