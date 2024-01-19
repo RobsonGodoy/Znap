@@ -1,65 +1,65 @@
 const db = require('../../services');
 
-const clienteRoutes = (server) => {
-  server.get('/clientes', (req, res, next) => {
-    db.clienteModulo.all()
+const categoriaRoutes = (server) => {
+  server.get('/categorias', (req, res, next) => {
+    db.categoriaDeProdutosModulo.all()
       .then(result => {
-        console.log('Bem vindo(a) a Lista de Clientes: ', result)
+        console.log(result);
         res.send(result);
         next();
       })
       .catch(error => {
-        console.error('Erro ao obter clientes:', error);
+        console.error('Erro ao obter categorias:', error);
         res.send(500, 'Erro interno do servidor');
         next();
       });
   });
 
-  server.post('/clientes', (req, res, next) => {
-    const { nome, email } = req.body;
+  server.post('/categorias', (req, res, next) => {
+    const { descricao } = req.body;
 
-    db.clienteModulo.save(nome, email)
+    db.categoriaDeProdutosModulo.save(descricao)
       .then(result => {
         res.send(result);
         next();
       })
       .catch(error => {
-        console.error('Erro ao adicionar cliente:', error);
+        console.error('Erro ao adicionar categoria:', error);
         res.send(500, 'Erro interno do servidor');
         next();
       });
   });
 
-  server.put('/clientes/:id', (req, res, next) => {
+  server.put('/categorias/:id', (req, res, next) => {
     const { id } = req.params;
-    const { nome, email } = req.body;
+    const { descricao } = req.body;
 
-    db.clienteModulo.update(id, nome, email)
+    db.categoriaDeProdutosModulo.update(id, descricao)
       .then(result => {
         res.send(result);
         next();
       })
       .catch(error => {
-        console.error('Erro ao atualizar cliente:', error);
+        console.error('Erro ao atualizar categoria:', error);
         res.send(500, 'Erro interno do servidor');
         next();
       });
   });
 
-  server.del('/clientes/:id', (req, res, next) => {
+  server.del('/categorias/:id', (req, res, next) => {
     const { id } = req.params;
 
-    db.clienteModulo.del(id)
+    db.categoriaDeProdutosModulo.del(id)
       .then(result => {
         res.send(result);
         next();
       })
       .catch(error => {
-        console.error('Erro ao excluir cliente:', error);
+        console.error('Erro ao excluir categoria:', error);
         res.send(500, 'Erro interno do servidor');
         next();
       });
   });
-};
+}
 
-module.exports = clienteRoutes;
+module.exports = categoriaRoutes;
