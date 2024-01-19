@@ -17,8 +17,14 @@ connection.connect((err) => {
 
 const categoriaDeProdutosModulo = require('./mysql/categoriaDeProdutos')({ connection });
 const produtoModulo = require('../services/mysql/produtoService')({ connection });
+const clienteModulo = require('../services/mysql/clienteService')({ connection });
+const pedidoMestreModulo= require('../services/mysql/pedidoMestreService')({ connection });
+const pedidoItemModulo= require('../services/mysql/pedidoItemService')({ connection });
 
 module.exports = {
       categoriaDeProdutosModulo,
-      produtoModulo
+      produtoModulo,
+      clienteModulo,
+      pedidoMestreModulo,
+      pedidoItemModulo
 };
