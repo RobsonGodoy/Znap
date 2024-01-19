@@ -16,7 +16,9 @@ connection.connect((err) => {
 });
 
 const categoriaDeProdutosModulo = require('./mysql/categoriaDeProdutos')({ connection });
+const produtoModulo = require('../services/mysql/produtoService')({ connection });
 
 module.exports = {
-  categoriaDeProdutosModulo
+      categoriaDeProdutosModulo,
+      produtoModulo
 };

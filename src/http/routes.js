@@ -1,4 +1,5 @@
 const db = require('../services');
+const produtoRoutes = require('./routes/produtoRoutes');
 
 const routes = (server) => {
   server.get('/categorias', (req, res, next) => {
@@ -61,7 +62,7 @@ const routes = (server) => {
       });
   });
 
-
-};
+  produtoRoutes(server);
+};  
 
 module.exports = routes;
