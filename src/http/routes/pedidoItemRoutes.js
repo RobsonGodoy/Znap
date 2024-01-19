@@ -4,6 +4,7 @@ const pedidoItemRoutes = (server) => {
   server.get('/pedidosItens', (req, res, next) => {
     db.pedidoItemModulo.all()
       .then(result => {
+        console.log(result)
         res.send(result);
         next();
       })

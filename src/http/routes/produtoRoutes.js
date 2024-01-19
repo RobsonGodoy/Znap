@@ -7,7 +7,7 @@ const produtoRoutes = (server) => {
         db.produtoModulo.all()
             .then(result => {
                 console.log(result);
-                res.send('Bem vindo(a) a Lista de Produtos');
+                res.send(result);
             })
             .catch(error => {
                 console.error('Erro ao obter Lista de Produtos:', error);

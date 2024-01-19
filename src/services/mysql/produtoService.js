@@ -3,11 +3,30 @@ const produtoService = deps => {
     all: () => {
       return new Promise((resolve, reject) => {
         const { connection } = (deps);
-        connection.query('SELECT * FROM produtos', (error, results) => {
+        const consulta = `SELECT
+        p.id_produto,
+        p.nome,
+        p.preco,
+        c.id_categoria,
+        c.descricao AS categoria_de_produtos_descricao
+      FROM Produtos p
+      INNER JOIN Categoria_de_Produtos c ON p.id_categoria = c.id_categoria;
+      `
+        connection.query(consulta, (error, results) => {
           if (error) {
             reject(error)
           }
-          resolve({ 'Lista de Produtos': results });
+          const listaDeProdutos = results.map(produto => ({
+            id_produto: produto.id_produto,
+            nome: produto.nome,
+            preco: produto.preco,
+            id_categoria: {
+              id_categoria: produto.id_categoria,
+              descricao: produto.categoria_de_produtos_descricao
+            }
+          }));
+
+          resolve({ 'Lista de Produtos': listaDeProdutos });
         });
       });
     },
