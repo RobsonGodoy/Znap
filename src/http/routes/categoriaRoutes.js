@@ -4,7 +4,6 @@ const categoriaRoutes = (server) => {
   server.get('/categorias', (req, res, next) => {
     db.categoriaDeProdutosModulo.all()
       .then(result => {
-        console.log(result);
         res.send(result);
         next();
       })

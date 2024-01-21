@@ -4,7 +4,6 @@ const clienteRoutes = (server) => {
   server.get('/clientes', (req, res, next) => {
     db.clienteModulo.all()
       .then(result => {
-        console.log('Bem vindo(a) a Lista de Clientes: ', result)
         res.send(result);
         next();
       })

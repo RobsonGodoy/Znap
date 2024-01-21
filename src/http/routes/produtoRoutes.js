@@ -6,7 +6,6 @@ const produtoRoutes = (server) => {
     server.get('/produtos', (req, res, next) => {
         db.produtoModulo.all()
             .then(result => {
-                console.log(result);
                 res.send(result);
             })
             .catch(error => {
